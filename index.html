@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<title>Hiệu ứng tặng Tâm</title>
+<style>
+    body {
+        background: url('D:/vscode/Tâm/Ảnh/wall.jpg') center/cover no-repeat fixed;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        padding-top: 50px;
+    }
+
+    .glow-text {
+        display: block;
+        text-align: center;
+        line-height: 1.4;
+        font-size: 55px;
+        font-weight: 900;
+        color: #fff;
+        font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+        letter-spacing: 3px;
+        text-shadow: 0 0 10px #ffb6c1, 0 0 20px #ff69b4, 0 0 40px #ff1493;
+        animation: bounce 1.5s infinite ease-in-out;
+        position: relative;
+        left: 15%;           
+        transform: translateX(0);
+    }
+
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(45deg);
+        animation: fly 4s infinite ease-in-out;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -10px;
+        left: 0;
+    }
+
+    .heart::after {
+        left: -10px;
+        top: 0;
+    }
+
+    @keyframes fly {
+        0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+        100% { transform: translateY(-200px) rotate(45deg); opacity: 0; }
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+</style>
+</head>
+<body>
+
+<div class="glow-text">Lê Thị Thanh Tâm<br>thông minh xinh đẹp</div>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (2 + Math.random() * 2) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+</body>
+</html>
